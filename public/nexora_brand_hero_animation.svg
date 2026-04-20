@@ -1,0 +1,56 @@
+<svg viewBox="0 0 792.96 370.85" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="">
+<title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Nexora brand hero animation</title>
+<desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Flowing lime-green glassy shapes drift across a black background while the word Nexora is revealed in the center in an elegant serif typeface</desc>
+<defs>
+<radialGradient id="ng1" cx="30%" cy="25%" r="85%">
+<stop offset="0%" stop-color="#FBFFD8"/>
+<stop offset="18%" stop-color="#ECFF7A"/>
+<stop offset="42%" stop-color="#D8FF1C"/>
+<stop offset="72%" stop-color="#5A7308"/>
+<stop offset="100%" stop-color="#000"/>
+</radialGradient>
+<radialGradient id="ng2" cx="65%" cy="35%" r="80%">
+<stop offset="0%" stop-color="#FFFFCC"/>
+<stop offset="22%" stop-color="#E4FF45"/>
+<stop offset="55%" stop-color="#A8CC15"/>
+<stop offset="85%" stop-color="#2A3800"/>
+<stop offset="100%" stop-color="#000"/>
+</radialGradient>
+<radialGradient id="ng3" cx="45%" cy="30%" r="90%">
+<stop offset="0%" stop-color="#FAFFB5"/>
+<stop offset="25%" stop-color="#D8FF1C"/>
+<stop offset="60%" stop-color="#7A9A10"/>
+<stop offset="100%" stop-color="#0A1200"/>
+</radialGradient>
+<radialGradient id="ng4" cx="55%" cy="20%" r="95%">
+<stop offset="0%" stop-color="#F5FFC8"/>
+<stop offset="30%" stop-color="#C8EC20"/>
+<stop offset="70%" stop-color="#3E5208"/>
+<stop offset="100%" stop-color="#000"/>
+</radialGradient>
+<radialGradient id="glow" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#000" stop-opacity="0.55"/>
+<stop offset="70%" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+</defs>
+
+<rect x="0" y="0" width="680" height="340" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<path d="M -60 -40 C 100 -10, 240 60, 230 170 C 220 280, 110 350, -10 340 C -130 330, -140 220, -110 130 C -90 70, -90 20, -60 -40 Z" fill="url(#ng1)" opacity="0.92" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.92;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</g>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<path d="M 730 -30 C 640 60, 490 90, 450 190 C 410 290, 540 370, 680 360 C 820 350, 780 220, 770 140 C 760 70, 750 20, 730 -30 Z" fill="url(#ng2)" opacity="0.88" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.88;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</g>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<path d="M 260 -30 C 370 20, 490 40, 500 140 C 510 240, 400 320, 300 300 C 200 280, 170 200, 200 130 C 220 80, 240 30, 260 -30 Z" fill="url(#ng3)" opacity="0.75" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.75;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</g>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<path d="M 340 -50 C 430 -20, 540 20, 520 110 C 500 190, 410 220, 340 190 C 270 160, 280 80, 340 -50 Z" fill="url(#ng4)" opacity="0.6" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</g>
+<ellipse cx="340" cy="190" rx="220" ry="60" fill="url(#glow)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<g style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<text x="340" y="205" text-anchor="middle" style="fill:rgb(246, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Cormorant Garamond&quot;, &quot;EB Garamond&quot;, Georgia, &quot;Times New Roman&quot;, serif;font-size:66px;font-weight:300;font-style:italic;text-anchor:middle;dominant-baseline:auto">
+<tspan style="fill:rgb(246, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Cormorant Garamond&quot;, &quot;EB Garamond&quot;, Georgia, &quot;Times New Roman&quot;, serif;font-size:66px;font-weight:300;font-style:italic;text-anchor:middle;dominant-baseline:auto">N</tspan><tspan style="fill:rgb(246, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Cormorant Garamond&quot;, &quot;EB Garamond&quot;, Georgia, &quot;Times New Roman&quot;, serif;font-size:66px;font-weight:300;font-style:italic;text-anchor:middle;dominant-baseline:auto">e</tspan><tspan style="fill:rgb(246, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Cormorant Garamond&quot;, &quot;EB Garamond&quot;, Georgia, &quot;Times New Roman&quot;, serif;font-size:66px;font-weight:300;font-style:italic;text-anchor:middle;dominant-baseline:auto">x</tspan><tspan style="fill:rgb(246, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Cormorant Garamond&quot;, &quot;EB Garamond&quot;, Georgia, &quot;Times New Roman&quot;, serif;font-size:66px;font-weight:300;font-style:italic;text-anchor:middle;dominant-baseline:auto">o</tspan><tspan style="fill:rgb(246, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Cormorant Garamond&quot;, &quot;EB Garamond&quot;, Georgia, &quot;Times New Roman&quot;, serif;font-size:66px;font-weight:300;font-style:italic;text-anchor:middle;dominant-baseline:auto">r</tspan><tspan style="fill:rgb(246, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Cormorant Garamond&quot;, &quot;EB Garamond&quot;, Georgia, &quot;Times New Roman&quot;, serif;font-size:66px;font-weight:300;font-style:italic;text-anchor:middle;dominant-baseline:auto">a</tspan>
+</text>
+</g>
+</svg>

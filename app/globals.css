@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  --background: #101010;
+  --background-soft: #171717;
+  --foreground: #f6f3ee;
+  --muted: rgba(246, 243, 238, 0.63);
+  --line: rgba(255, 255, 255, 0.08);
+  --lime: rgb(216, 255, 28);
+  --lime-soft: rgba(216, 255, 28, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #000;
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif), serif;
+}
+
+.page-shell {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.page-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: #000;
+}
+
+.page-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: transparent;
+  pointer-events: none;
+}
+
+.glass-outline {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 20px 80px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(22px);
+}
+
+.hero-wordmark {
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.stage-noise {
+  background-image:
+    linear-gradient(125deg, rgba(255, 255, 255, 0.045), transparent 24%, transparent 76%, rgba(255, 255, 255, 0.035)),
+    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.09), transparent 24%),
+    radial-gradient(circle at 78% 68%, rgba(216, 255, 28, 0.08), transparent 24%);
+}
+
+.marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-shell::before {
+    background: #000;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
