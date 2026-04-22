@@ -16,9 +16,12 @@ const serif = Bodoni_Moda({
 });
 
 export const metadata: Metadata = {
-  title: "Nexora",
+  title: {
+    default: "Aureon",
+    template: "%s | Aureon"
+  },
   description:
-    "Nexora builds high-clarity websites and motion-first brand experiences for ambitious companies."
+    "Aureon builds minimal websites, business systems, dashboards, and growth-ready digital experiences."
 };
 
 export default function RootLayout({
