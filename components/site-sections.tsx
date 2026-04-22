@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
 
 type Action = {
   label: string;
@@ -47,6 +48,15 @@ type TeamMember = {
   name: string;
   role: string;
   bio: string;
+};
+
+type ContactFormState = {
+  name: string;
+  email: string;
+  company: string;
+  service: string;
+  budget: string;
+  message: string;
 };
 
 function SectionMotion({
@@ -106,7 +116,6 @@ function ActionButtons({
 }
 
 export function HomeHero({
-  brand,
   badge,
   title,
   emphasizedWord,
@@ -114,7 +123,6 @@ export function HomeHero({
   primaryAction,
   secondaryAction
 }: {
-  brand: string;
   badge: string;
   title: string;
   emphasizedWord: string;
@@ -132,21 +140,7 @@ export function HomeHero({
       className="pb-10 pt-8 sm:pt-12"
     >
       <div className="mx-auto flex max-w-[920px] flex-col items-center text-center">
-        <div className="rounded-full border border-[var(--line)] bg-white p-2 shadow-[0_16px_30px_var(--shadow-color)] md:hidden">
-          <div className="flex items-center gap-2">
-            <div className="rounded-full px-6 py-3 text-[2rem] leading-none tracking-[-0.06em] text-[var(--foreground)] font-serif-display">
-              {brand}
-            </div>
-            <Link
-              href={primaryAction.href}
-              className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#7f0000]"
-            >
-              {primaryAction.label}
-            </Link>
-          </div>
-        </div>
-
-        <div className="mt-20 inline-flex items-center gap-3 rounded-full border border-[var(--line)] bg-white px-5 py-2.5 text-sm text-black/60 shadow-[0_10px_22px_var(--shadow-color)] md:mt-10">
+        <div className="inline-flex items-center gap-3 rounded-full border border-[var(--line)] bg-white px-5 py-2.5 text-sm text-black/60 shadow-[0_10px_22px_var(--shadow-color)]">
           <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
           {badge}
         </div>
@@ -624,6 +618,170 @@ export function ContactGrid({
             </Link>
           </div>
         ))}
+      </div>
+    </SectionMotion>
+  );
+}
+
+export function ContactFormSection({
+  eyebrow,
+  title,
+  description
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  const [submitted, setSubmitted] = useState(false);
+  const [formState, setFormState] = useState<ContactFormState>({
+    name: "",
+    email: "",
+    company: "",
+    service: "",
+    budget: "",
+    message: ""
+  });
+
+  function updateField<K extends keyof ContactFormState>(
+    key: K,
+    value: ContactFormState[K]
+  ) {
+    setFormState((current) => ({ ...current, [key]: value }));
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSubmitted(true);
+  }
+
+  return (
+    <SectionMotion className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="rounded-[32px] border border-[var(--line)] bg-[var(--background-soft)] px-6 py-7 shadow-[0_12px_24px_var(--shadow-color)]">
+        <SectionHeading eyebrow={eyebrow} title={title} description={description} compact />
+        <div className="mt-8 space-y-4">
+          <div className="rounded-[24px] border border-[var(--line)] bg-white px-5 py-4">
+            <p className="text-sm text-black/44">Best for</p>
+            <p className="mt-2 text-base font-medium text-black/76">
+              New website builds, systems work, redesigns, and growth support.
+            </p>
+          </div>
+          <div className="rounded-[24px] border border-[var(--line)] bg-white px-5 py-4">
+            <p className="text-sm text-black/44">What to include</p>
+            <p className="mt-2 text-base font-medium text-black/76">
+              Your business, timeline, scope, and what you want improved.
+            </p>
+          </div>
+          <div className="rounded-[24px] border border-[var(--line)] bg-white px-5 py-4">
+            <p className="text-sm text-black/44">Response</p>
+            <p className="mt-2 text-base font-medium text-black/76">
+              We review messages and follow up with direction on the next step.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-[32px] border border-[var(--line)] bg-white px-6 py-7 shadow-[0_16px_30px_var(--shadow-color)]">
+        <form className="grid gap-5" onSubmit={handleSubmit}>
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="grid gap-2">
+              <span className="text-sm font-medium text-black/64">Name</span>
+              <input
+                type="text"
+                value={formState.name}
+                onChange={(event) => updateField("name", event.target.value)}
+                placeholder="Your name"
+                className="rounded-[18px] border border-[var(--line)] bg-[var(--background-soft)] px-4 py-3 text-black outline-none transition focus:border-[var(--accent)]"
+                required
+              />
+            </label>
+
+            <label className="grid gap-2">
+              <span className="text-sm font-medium text-black/64">Email</span>
+              <input
+                type="email"
+                value={formState.email}
+                onChange={(event) => updateField("email", event.target.value)}
+                placeholder="you@example.com"
+                className="rounded-[18px] border border-[var(--line)] bg-[var(--background-soft)] px-4 py-3 text-black outline-none transition focus:border-[var(--accent)]"
+                required
+              />
+            </label>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="grid gap-2">
+              <span className="text-sm font-medium text-black/64">Company</span>
+              <input
+                type="text"
+                value={formState.company}
+                onChange={(event) => updateField("company", event.target.value)}
+                placeholder="Company or brand"
+                className="rounded-[18px] border border-[var(--line)] bg-[var(--background-soft)] px-4 py-3 text-black outline-none transition focus:border-[var(--accent)]"
+              />
+            </label>
+
+            <label className="grid gap-2">
+              <span className="text-sm font-medium text-black/64">Service</span>
+              <select
+                value={formState.service}
+                onChange={(event) => updateField("service", event.target.value)}
+                className="rounded-[18px] border border-[var(--line)] bg-[var(--background-soft)] px-4 py-3 text-black outline-none transition focus:border-[var(--accent)]"
+                required
+              >
+                <option value="">Select a service</option>
+                <option value="website">Website design and development</option>
+                <option value="systems">Admin panel or internal system</option>
+                <option value="ecommerce">E-commerce or ordering flow</option>
+                <option value="growth">Marketing and growth support</option>
+                <option value="other">Something else</option>
+              </select>
+            </label>
+          </div>
+
+          <label className="grid gap-2 md:max-w-[280px]">
+            <span className="text-sm font-medium text-black/64">Budget</span>
+            <select
+              value={formState.budget}
+              onChange={(event) => updateField("budget", event.target.value)}
+              className="rounded-[18px] border border-[var(--line)] bg-[var(--background-soft)] px-4 py-3 text-black outline-none transition focus:border-[var(--accent)]"
+            >
+              <option value="">Select budget range</option>
+              <option value="1-3k">$1k - $3k</option>
+              <option value="3-7k">$3k - $7k</option>
+              <option value="7-15k">$7k - $15k</option>
+              <option value="15k+">$15k+</option>
+            </select>
+          </label>
+
+          <label className="grid gap-2">
+            <span className="text-sm font-medium text-black/64">Project details</span>
+            <textarea
+              value={formState.message}
+              onChange={(event) => updateField("message", event.target.value)}
+              placeholder="Tell us what you need, what exists already, and what outcome you want."
+              className="min-h-[160px] rounded-[22px] border border-[var(--line)] bg-[var(--background-soft)] px-4 py-3 text-black outline-none transition focus:border-[var(--accent)]"
+              required
+            />
+          </label>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-black/52">
+              This form is ready for questions now and can be wired to email or CRM next.
+            </p>
+            <button
+              type="submit"
+              className="rounded-full bg-[var(--accent)] px-7 py-3 text-base font-semibold text-white shadow-[0_12px_24px_var(--shadow-color)] transition hover:-translate-y-0.5 hover:bg-[#7f0000]"
+            >
+              Send message
+            </button>
+          </div>
+
+          {submitted ? (
+            <div className="rounded-[22px] border border-[var(--accent)] bg-[var(--accent-soft)] px-4 py-3 text-sm text-[var(--accent)]">
+              Thanks. Your message is captured in the form state and ready for backend wiring.
+            </div>
+          ) : null}
+        </form>
       </div>
     </SectionMotion>
   );

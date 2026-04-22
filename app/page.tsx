@@ -21,7 +21,6 @@ export default function Home() {
   return (
     <SiteShell>
       <HomeHero
-        brand="Aureon"
         badge="Websites, systems, and growth support for modern businesses."
         title="Aureon builds SaaS websites that sell clearly."
         emphasizedWord="SaaS"
