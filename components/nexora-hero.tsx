@@ -68,7 +68,7 @@ export function NexoraHero() {
 
   return (
     <main className="page-shell min-h-screen bg-[var(--background)] px-4 pb-20 pt-7 text-[var(--foreground)] sm:px-6 lg:px-10">
-      <header className="sticky top-5 z-50 mx-auto flex w-full max-w-fit items-center gap-1 rounded-full border border-white/10 bg-[rgba(17,17,17,0.72)] px-3 py-2 shadow-[0_18px_50px_rgba(0,0,0,0.36)] backdrop-blur-xl">
+      <header className="sticky top-5 z-50 mx-auto flex w-full max-w-fit items-center gap-1 rounded-full border border-black/10 bg-white/80 px-3 py-2 shadow-[0_18px_50px_rgba(17,17,17,0.12)] backdrop-blur-xl">
         <a
           href="#"
           className="font-serif-display px-4 text-[1.7rem] leading-none tracking-[-0.05em]"
@@ -81,7 +81,7 @@ export function NexoraHero() {
             <a
               key={item}
               href="#"
-              className="rounded-full px-3.5 py-2 text-[13px] font-medium text-white/88 transition hover:bg-white/[0.05] hover:text-white"
+              className="rounded-full px-3.5 py-2 text-[13px] font-medium text-black/72 transition hover:bg-black/[0.05] hover:text-black"
             >
               {item}
             </a>
@@ -90,7 +90,7 @@ export function NexoraHero() {
 
         <a
           href="#"
-          className="hidden rounded-full border border-white/10 px-4 py-2 text-[13px] font-medium text-white/92 transition hover:bg-white/[0.05] md:inline-flex"
+          className="hidden rounded-full border border-black/10 px-4 py-2 text-[13px] font-medium text-black/80 transition hover:bg-black/[0.05] md:inline-flex"
         >
           Tutorials
         </a>
@@ -112,21 +112,21 @@ export function NexoraHero() {
             style={animatedTextStyle}
             className="relative z-10 flex max-w-[940px] flex-col items-center pt-[5.5rem] text-center sm:pt-28"
           >
-            <div className="rounded-full border border-white/10 bg-white/[0.025] px-5 py-2 text-sm text-white/78 shadow-[0_12px_30px_rgba(0,0,0,0.22)] backdrop-blur-lg">
+            <div className="rounded-full border border-black/10 bg-black/[0.03] px-5 py-2 text-sm text-black/68 shadow-[0_12px_30px_rgba(17,17,17,0.08)] backdrop-blur-lg">
               <span className="mr-2 inline-block h-2.5 w-2.5 rounded-full bg-[var(--lime)] shadow-[0_0_14px_rgba(216,255,28,0.9)]" />
               Websites for SaaS businesses.
             </div>
 
             <h1 className="mt-10 text-[clamp(3.8rem,8.7vw,7.9rem)] font-semibold leading-[0.92] tracking-[-0.075em]">
               Nexora builds
-              <span className="font-serif-display ml-[0.12em] font-medium italic text-white/90">
+              <span className="font-serif-display ml-[0.12em] font-medium italic text-black/82">
                 SaaS
               </span>
               <br />
               websites that sell clearly.
             </h1>
 
-            <p className="mt-7 max-w-[760px] text-[clamp(1.02rem,1.8vw,1.45rem)] tracking-[-0.04em] text-white/70">
+            <p className="mt-7 max-w-[760px] text-[clamp(1.02rem,1.8vw,1.45rem)] tracking-[-0.04em] text-black/62">
               I design and build conversion-focused websites for SaaS businesses that need sharper messaging, cleaner product storytelling, and better looking pages.
             </p>
 
@@ -139,7 +139,7 @@ export function NexoraHero() {
               </a>
               <a
                 href="#"
-                className="rounded-full border border-white/10 bg-white/[0.02] px-10 py-4 text-[1.02rem] font-medium text-white/88 transition hover:bg-white/[0.05]"
+                className="rounded-full border border-black/10 bg-black/[0.03] px-10 py-4 text-[1.02rem] font-medium text-black/78 transition hover:bg-black/[0.06]"
               >
                 See plans
               </a>
@@ -150,7 +150,7 @@ export function NexoraHero() {
             style={animatedImageStyle}
             className="pointer-events-none absolute inset-x-0 top-[72vh] z-30 mx-auto w-full max-w-[1120px]"
           >
-            <div className="relative h-[340px] overflow-hidden rounded-[30px] border border-white/8 bg-black sm:h-[440px] lg:h-[560px]">
+            <div className="relative h-[340px] overflow-hidden rounded-[30px] border border-black/10 bg-[#0b0b0b] sm:h-[440px] lg:h-[560px]">
               <AnimatedHeroArtwork />
             </div>
           </motion.div>
@@ -158,8 +158,8 @@ export function NexoraHero() {
       </section>
 
       <section className="relative z-10 mx-auto -mt-[24vh] max-w-[1120px]">
-        <div className="overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.02] py-5 shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-sm">
-          <p className="mb-4 text-center text-sm text-white/42">
+        <div className="overflow-hidden rounded-[28px] border border-black/10 bg-[var(--background-soft)] py-5 shadow-[0_18px_60px_rgba(17,17,17,0.08)] backdrop-blur-sm">
+          <p className="mb-4 text-center text-sm text-black/42">
             SaaS teams and businesses I have helped
           </p>
           <div className="marquee-mask">
@@ -167,7 +167,7 @@ export function NexoraHero() {
               {[...companies, ...companies].map((company, index) => (
                 <span
                   key={`${company}-${index}`}
-                  className="mx-7 whitespace-nowrap text-[1.7rem] font-semibold tracking-[-0.06em] text-white/86 sm:text-[2.2rem]"
+                  className="mx-7 whitespace-nowrap text-[1.7rem] font-semibold tracking-[-0.06em] text-black/82 sm:text-[2.2rem]"
                 >
                   {company}
                 </span>
@@ -183,19 +183,19 @@ export function NexoraHero() {
           whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))] px-6 py-12 shadow-[0_22px_70px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:px-10 sm:py-16 lg:px-14"
+          className="rounded-[36px] border border-black/10 bg-[linear-gradient(180deg,rgba(17,17,17,0.03),rgba(17,17,17,0.015))] px-6 py-12 shadow-[0_22px_70px_rgba(17,17,17,0.08)] backdrop-blur-sm sm:px-10 sm:py-16 lg:px-14"
         >
           <div className="mx-auto max-w-[760px] text-center">
-            <div className="inline-flex rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-white/76">
+            <div className="inline-flex rounded-full border border-black/10 bg-black/[0.03] px-5 py-2 text-sm text-black/68">
               Process
             </div>
             <h2 className="mt-8 text-[clamp(2.4rem,5.6vw,5.1rem)] font-semibold leading-[0.95] tracking-[-0.07em]">
               Your SaaS website,
-              <span className="font-serif-display ml-[0.12em] font-medium italic text-white/90">
+              <span className="font-serif-display ml-[0.12em] font-medium italic text-black/82">
                 effortlessly.
               </span>
             </h2>
-            <p className="mt-5 text-[clamp(1rem,1.8vw,1.45rem)] tracking-[-0.04em] text-white/60">
+            <p className="mt-5 text-[clamp(1rem,1.8vw,1.45rem)] tracking-[-0.04em] text-black/58">
               A simple three-step flow for shipping polished SaaS pages without slow agency cycles.
             </p>
           </div>
@@ -204,15 +204,15 @@ export function NexoraHero() {
             {processSteps.map((step) => (
               <div
                 key={step.title}
-                className="rounded-[28px] border border-white/7 bg-white/[0.015] px-6 py-8 text-center"
+                className="rounded-[28px] border border-black/8 bg-white px-6 py-8 text-center shadow-[0_12px_36px_rgba(17,17,17,0.06)]"
               >
-                <div className="mx-auto flex h-16 w-16 items-center justify-center text-white">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center text-black">
                   {step.icon}
                 </div>
-                <h3 className="mt-6 text-[2rem] font-semibold tracking-[-0.06em] text-white/94">
+                <h3 className="mt-6 text-[2rem] font-semibold tracking-[-0.06em] text-black/92">
                   {step.title}
                 </h3>
-                <p className="mx-auto mt-4 max-w-[280px] text-lg leading-relaxed tracking-[-0.03em] text-white/56">
+                <p className="mx-auto mt-4 max-w-[280px] text-lg leading-relaxed tracking-[-0.03em] text-black/56">
                   {step.description}
                 </p>
               </div>
