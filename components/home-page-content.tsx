@@ -6,7 +6,6 @@ import {
   Database,
   Gauge,
   Globe,
-  MessageSquare,
   PenTool,
   ShieldCheck
 } from "lucide-react";
@@ -27,8 +26,6 @@ const capabilityRows = [
   { icon: Gauge, label: "Marketing, content, social media, and paid ads" },
   { icon: ShieldCheck, label: "Booking, ordering QR, e-commerce, and AI agents" }
 ];
-
-const websiteModules = ["Clear positioning", "Trust blocks"];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -323,81 +320,11 @@ function MockupStage({
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                {websiteModules.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-[16px] bg-[var(--background-soft)] px-3 py-2.5 text-[11px] text-black/58 md:text-xs"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 grid gap-2.5 md:grid-cols-[1.05fr_0.95fr]">
-                <div className="rounded-[18px] bg-[var(--background-soft)] px-4 py-4">
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-black/38">
-                    Core offer
-                  </p>
-                  <div className="mt-3 space-y-2.5">
-                    <div className="h-2 rounded-full bg-black/8">
-                      <div className="h-2 w-[68%] rounded-full bg-[var(--foreground)]" />
-                    </div>
-                    <div className="h-2 rounded-full bg-black/8">
-                      <div className="h-2 w-[54%] rounded-full bg-[var(--accent)]" />
-                    </div>
-                    <div className="h-2 rounded-full bg-black/8">
-                      <div className="h-2 w-[76%] rounded-full bg-black/18" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-[18px] bg-[var(--foreground)] px-4 py-4 text-white">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-[10px] uppercase tracking-[0.18em] text-white/42">
-                      Business result
-                    </p>
-                    <MessageSquare className="h-4 w-4 text-white/54" />
-                  </div>
-                  <p className="mt-3 text-[1.1rem] font-semibold leading-snug tracking-[-0.04em] md:text-lg">
-                    Better digital tools, clearer customer journeys, and stronger brand growth.
-                  </p>
-                  <div className="mt-3 rounded-full bg-white/[0.08] px-3 py-2 text-[11px] text-white/70 md:text-xs">
-                    Software, websites, operations, and marketing aligned in one direction.
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </motion.div>
 
-      <motion.div
-        initial={prefersReducedMotion ? false : { opacity: 0, x: 18, y: 18 }}
-        animate={
-          prefersReducedMotion ? undefined : { opacity: 1, x: 0, y: [0, -6, 0] }
-        }
-        transition={
-          prefersReducedMotion
-            ? undefined
-            : {
-                opacity: { duration: 0.45, delay: 0.25 },
-                x: { duration: 0.45, delay: 0.25 },
-                y: { duration: 4.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
-              }
-        }
-        className="absolute -bottom-4 right-4 hidden rounded-[20px] bg-[var(--accent)] px-4 py-3 text-white md:block"
-      >
-        <div className="flex items-center gap-2">
-          <MessageSquare className="h-4 w-4" />
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.18em] text-white/56">
-              Conversion note
-            </p>
-            <p className="mt-1 text-sm font-medium">Clearer writing, fewer dead ends.</p>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 }
