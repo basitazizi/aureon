@@ -267,7 +267,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </AnimatePresence>
         </header>
 
-        <main className="pt-8">{children}</main>
+        <main className="pt-12 sm:pt-14">{children}</main>
 
         <footer className="mt-10 border-t border-[var(--line)] px-4 py-5">
           <div className="mx-auto flex max-w-[620px] flex-col items-center text-center">
