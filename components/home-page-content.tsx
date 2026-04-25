@@ -36,22 +36,11 @@ export default function HomePageContent() {
 
         <div className="relative space-y-10 pb-6 sm:space-y-12">
           <section className="relative left-1/2 w-screen -translate-x-1/2 px-6 pt-0 lg:px-10">
-            <Reveal prefersReducedMotion={prefersReducedMotion}>
-              <div className="mx-auto max-w-[1180px] pt-1.5">
-                <div className="flex justify-center">
-                  <div className="inline-flex items-center gap-3 rounded-[28px] border border-[var(--line)] bg-white/94 px-5 py-3 text-sm text-black/60 backdrop-blur-xl">
-                    <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
-                    Software, systems, websites, and growth support for modern businesses.
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
             <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,rgba(152,0,0,0.08),transparent_62%)]" />
 
-            <div className="relative mx-auto flex max-w-[960px] flex-col items-center pt-8 text-center sm:pt-10">
+            <div className="relative mx-auto flex max-w-[960px] flex-col items-center pt-2 text-center sm:pt-4">
               <Reveal prefersReducedMotion={prefersReducedMotion} delay={0.08}>
-                <h1 className="mt-5 max-w-[12.5ch] text-balance text-[clamp(3rem,9vw,6.4rem)] font-semibold leading-[0.88] tracking-[-0.09em] text-[var(--foreground)]">
+                <h1 className="max-w-[12.5ch] text-balance text-[clamp(3rem,9vw,6.4rem)] font-semibold leading-[0.88] tracking-[-0.09em] text-[var(--foreground)]">
                   Aureon builds{" "}
                   <span className="font-serif-display font-medium italic text-[var(--foreground-soft)]">
                     digital
