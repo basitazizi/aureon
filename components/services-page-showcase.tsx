@@ -204,15 +204,6 @@ function SoftwareVisual({
       <Glow accent="rgba(152,0,0,0.22)" className="-right-12 top-8" prefersReducedMotion={prefersReducedMotion} />
       <Glow accent="rgba(255,255,255,0.08)" className="-left-10 bottom-6" prefersReducedMotion={prefersReducedMotion} />
 
-      <FloatCard
-        className="absolute right-4 top-4 z-10 rounded-[18px] border border-white/10 bg-white/[0.08] px-4 py-3 backdrop-blur-sm"
-        prefersReducedMotion={prefersReducedMotion}
-        movement={{ y: [-4, 6, -4] }}
-      >
-        <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">Software stack</p>
-        <p className="mt-1 text-sm font-semibold text-white">Website + admin + QR</p>
-      </FloatCard>
-
       <div className="overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.05] sm:rounded-[24px]">
           <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
             <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
@@ -422,15 +413,6 @@ function AutomationVisual({
       <Glow accent="rgba(152,0,0,0.24)" className="-right-10 top-6" prefersReducedMotion={prefersReducedMotion} />
       <Glow accent="rgba(255,255,255,0.08)" className="-left-12 bottom-4" prefersReducedMotion={prefersReducedMotion} />
 
-      <FloatCard
-        className="absolute right-3 top-3 z-10 rounded-[16px] border border-white/12 bg-[rgba(20,18,18,0.82)] px-3 py-2.5 shadow-[0_10px_24px_rgba(0,0,0,0.28)] backdrop-blur-md sm:right-4 sm:top-4 sm:rounded-[18px] sm:px-4 sm:py-3"
-        prefersReducedMotion={prefersReducedMotion}
-        movement={{ y: [0, -7, 0] }}
-      >
-        <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">Automation live</p>
-        <p className="mt-1 text-sm font-semibold text-white">12 leads responded</p>
-      </FloatCard>
-
       <div className="grid gap-3 lg:grid-cols-[0.72fr_0.28fr] lg:gap-4">
         <div className="overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.05] sm:rounded-[24px]">
           <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
@@ -531,15 +513,6 @@ function MarketingVisual({
     <div className="relative min-h-[22rem] overflow-hidden rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,#171717,#111111)] p-3 sm:min-h-[28rem] sm:rounded-[28px] sm:p-5">
       <Glow accent="rgba(152,0,0,0.18)" className="-left-12 bottom-4" prefersReducedMotion={prefersReducedMotion} />
       <Glow accent="rgba(255,255,255,0.08)" className="-right-8 top-6" prefersReducedMotion={prefersReducedMotion} />
-
-      <FloatCard
-        className="absolute right-4 top-4 z-10 rounded-[18px] border border-white/10 bg-white/[0.08] px-4 py-3 backdrop-blur-sm"
-        prefersReducedMotion={prefersReducedMotion}
-        movement={{ y: [0, -7, 0] }}
-      >
-        <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">Growth pulse</p>
-        <p className="mt-1 text-sm font-semibold text-white">ROAS +3.4x</p>
-      </FloatCard>
 
       <div className="relative space-y-4">
         <div className="overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.05] sm:rounded-[26px]">
@@ -652,31 +625,5 @@ function Glow({
       className={`pointer-events-none absolute h-48 w-48 rounded-full blur-3xl ${className}`}
       style={{ background: accent }}
     />
-  );
-}
-
-function FloatCard({
-  children,
-  className,
-  prefersReducedMotion,
-  movement
-}: {
-  children: React.ReactNode;
-  className: string;
-  prefersReducedMotion: boolean;
-  movement: { y?: number[]; rotate?: number[] };
-}) {
-  return (
-    <motion.div
-      animate={prefersReducedMotion ? undefined : movement}
-      transition={
-        prefersReducedMotion
-          ? undefined
-          : { duration: 5.4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
-      }
-      className={className}
-    >
-      {children}
-    </motion.div>
   );
 }
