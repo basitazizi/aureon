@@ -8,8 +8,16 @@
   --foreground-soft: #312f30;
   --muted: rgba(49, 47, 48, 0.68);
   --line: rgba(48, 46, 47, 0.12);
-  --accent: #980000;
-  --accent-soft: rgba(152, 0, 0, 0.1);
+  --accent: #9c3736;
+  --accent-hover: #842f2e;
+  --accent-soft: rgba(156, 55, 54, 0.12);
+  --accent-soft-alt: rgba(156, 55, 54, 0.1);
+  --accent-glow: rgba(156, 55, 54, 0.08);
+  --accent-glow-strong: rgba(156, 55, 54, 0.22);
+  --accent-line-strong: rgba(156, 55, 54, 0.24);
+  --accent-focus: rgba(156, 55, 54, 0.65);
+  --accent-gradient-fade: rgba(156, 55, 54, 0.16);
+  --accent-selection: rgba(156, 55, 54, 0.18);
   --shadow-color: rgba(108, 108, 108, 0.16);
 }
 
@@ -30,7 +38,7 @@ body {
 }
 
 ::selection {
-  background: rgba(152, 0, 0, 0.18);
+  background: var(--accent-selection);
   color: var(--foreground);
 }
 
@@ -88,7 +96,7 @@ button {
   background-image:
     linear-gradient(125deg, rgba(48, 46, 47, 0.035), transparent 24%, transparent 76%, rgba(48, 46, 47, 0.025)),
     radial-gradient(circle at 22% 18%, rgba(48, 46, 47, 0.05), transparent 24%),
-    radial-gradient(circle at 78% 68%, rgba(152, 0, 0, 0.06), transparent 24%);
+    radial-gradient(circle at 78% 68%, var(--accent-glow), transparent 24%);
 }
 
 .marquee-mask {
@@ -114,6 +122,43 @@ button {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.form-field {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.form-field::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.form-field:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-field:focus {
+  border-color: var(--accent-focus);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(178, 63, 62, 0.12);
+  outline: none;
+}
+
+.form-field:-webkit-autofill,
+.form-field:-webkit-autofill:hover,
+.form-field:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  box-shadow:
+    0 0 0 1000px rgba(34, 31, 32, 0.98) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+  transition: background-color 9999s ease-in-out 0s;
+  caret-color: #fff;
 }
 
 .soft-text-shadow {

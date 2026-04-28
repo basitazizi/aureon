@@ -239,7 +239,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 >
                   <div className="relative flex h-full flex-col overflow-hidden rounded-[34px] border border-black/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,241,239,0.94))] px-4 pb-6 pt-4 shadow-[0_22px_40px_rgba(27,26,26,0.14)] backdrop-blur-[16px]">
                     <div className="pointer-events-none absolute inset-x-5 top-3 h-24 rounded-[24px] bg-[linear-gradient(180deg,rgba(255,255,255,0.64),transparent)] blur-lg" />
-                    <div className="pointer-events-none absolute bottom-4 left-4 top-4 w-px bg-[linear-gradient(180deg,rgba(152,0,0,0.24),rgba(48,46,47,0.12))]" />
+                    <div className="pointer-events-none absolute bottom-4 left-4 top-4 w-px bg-[linear-gradient(180deg,var(--accent-line-strong),rgba(48,46,47,0.12))]" />
 
                     <div className="relative flex h-full flex-col pl-5 pr-2">
                       <div className="flex items-center justify-between">

@@ -1,155 +1,284 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  Bot,
+  ChevronDown,
+  LayoutDashboard,
+  Megaphone,
+  Monitor,
+  type LucideIcon
+} from "lucide-react";
 import { useState } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const serviceStories = [
+type ServiceStory = {
+  id: string;
+  tab: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  whyItMatters: string;
+  icon: LucideIcon;
+  emphasis?: "accent";
+};
+
+const serviceStories: ServiceStory[] = [
   {
-    id: "ai-automation",
-    tab: "AI Agents",
-    eyebrow: "Calls, workflows, texting, booking",
-    title: "AI agents that answer, follow up, and book for the business.",
+    id: "websites",
+    tab: "Website Development",
+    eyebrow: "Business sites, booking, QR ordering, e-commerce",
+    title: "Custom websites, online ordering flows, and eCommerce builds designed to turn attention into action.",
     description:
-      "AI agents are the biggest scope here: inbound call handling, appointment setting, texting, workflow routing, lead qualification, reminders, and operational automations that keep moving without manual delay.",
-    panelGradient:
-      "linear-gradient(135deg, rgba(115,30,30,0.2), rgba(255,255,255,0.03) 46%, rgba(255,255,255,0.02))"
+      "We build business websites, booking flows, online stores, and restaurant ordering systems with in-store QR code ordering, kitchen-ready order flow, payment handling, and online pickup setup.",
+    whyItMatters:
+      "A stronger website builds trust faster, explains the offer clearly, and gives customers a direct path to enquire, book, buy, or place a QR order that goes straight into operations.",
+    icon: Monitor
   },
   {
-    id: "software-dev",
-    tab: "Software Development",
-    eyebrow: "Websites, QR, admin, database",
-    title: "Software systems built to sell, manage, and scale.",
+    id: "ai-agents",
+    tab: "AI Agents",
+    eyebrow: "Calls, follow-up, reminders",
+    title: "AI agents that answer, follow up, and keep the workflow moving.",
     description:
-      "We build the full software layer: websites, booking flows, ordering QR systems, admin panels, database-backed dashboards, e-commerce, and the internal tools behind real operations.",
-    panelGradient:
-      "linear-gradient(135deg, rgba(152,0,0,0.16), rgba(255,255,255,0.03) 46%, rgba(255,255,255,0.02))"
+      "From missed-call coverage to automated follow-up, reminders, and qualification, we build AI workflows around the way your business already runs.",
+    whyItMatters:
+      "AI agents reduce missed opportunities by responding faster, following up automatically, and taking repetitive workload off the team.",
+    icon: Bot,
+    emphasis: "accent"
+  },
+  {
+    id: "dashboards",
+    tab: "Admin Dashboards",
+    eyebrow: "Database, reporting, internal tools",
+    title: "Dashboards and internal systems that give operations one clean control layer.",
+    description:
+      "We build connected dashboards for clients, orders, staff workflows, reporting, and internal tools so the business can run from one place.",
+    whyItMatters:
+      "A connected dashboard gives your team better visibility, cleaner operations, and less friction across day-to-day management.",
+    icon: LayoutDashboard
   },
   {
     id: "marketing",
-    tab: "Marketing",
-    eyebrow: "Social, content, paid, branding",
-    title: "Marketing systems that make the brand easier to grow.",
+    tab: "Paid Advertising",
+    eyebrow: "Ads, content creation, brand scaling",
+    title: "Paid advertising, content creation, and brand scaling strategy built to grow revenue.",
     description:
-      "We support launches with social media systems, content creation, paid ads, brand scaling strategy, and brand development so the site and software are backed by a real growth layer.",
-    panelGradient:
-      "linear-gradient(135deg, rgba(132,114,114,0.18), rgba(255,255,255,0.03) 46%, rgba(255,255,255,0.02))"
+      "We manage Meta, Facebook, TikTok, and Instagram campaigns alongside short-form content creation and brand scaling strategy to support stronger growth.",
+    whyItMatters:
+      "Paid advertising and content systems help your brand reach new customers, improve creative performance, and scale with more consistency.",
+    icon: Megaphone
   }
-] as const;
+];
 
 export function ServicesPageShowcase() {
   const prefersReducedMotion = useReducedMotion() ?? false;
-  const [activeId, setActiveId] = useState<(typeof serviceStories)[number]["id"]>(
-    serviceStories[0].id
-  );
-  const activeService =
-    serviceStories.find((story) => story.id === activeId) ?? serviceStories[0];
+  const [activeId, setActiveId] = useState<ServiceStory["id"] | null>(null);
 
   return (
     <section
       id="services-showcase"
-      className="relative overflow-hidden rounded-[40px] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,#101111,#171717)] px-4 py-5 text-white shadow-[0_22px_44px_rgba(27,26,26,0.18)] sm:px-5 sm:py-6"
+      className="relative overflow-hidden rounded-[36px] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,#151414,#221f20)] px-4 py-5 text-white shadow-[0_22px_44px_rgba(27,26,26,0.18)] sm:px-5 sm:py-6 lg:px-7 lg:py-7"
     >
-      <div className="pointer-events-none absolute inset-0 stage-noise opacity-70" />
-      <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(152,0,0,0.26),transparent_68%)] blur-2xl" />
-      <div className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.08),transparent_68%)] blur-2xl" />
+      <div className="pointer-events-none absolute inset-0 stage-noise opacity-65" />
 
       <div className="relative">
-        <div className="px-2 pb-5 pt-2 sm:px-4">
+        <div className="mx-auto max-w-[68rem] px-1 pb-6 pt-2 text-center sm:px-2">
           <p className="text-xs uppercase tracking-[0.24em] text-white/42">
-            Service stories
+            What we do
           </p>
-          <h2 className="mt-4 max-w-[12ch] text-balance text-[clamp(2.6rem,5vw,4.8rem)] font-semibold leading-[0.94] tracking-[-0.07em]">
-            Pick the lane that fits the build.
+          <h2 className="mt-4 text-balance text-[clamp(2.3rem,5vw,4.9rem)] font-semibold leading-[0.94] text-white">
+            Services built to bring in customers, simplify operations, and support growth.
           </h2>
-          <p className="mt-4 max-w-[42rem] text-base leading-relaxed text-white/64 sm:text-lg">
-            One connected component, one active service card, and a true horizontal
-            tab row that stays side-by-side on phone and desktop.
+          <p className="mx-auto mt-4 max-w-[54rem] text-base leading-relaxed text-white/66 sm:text-lg">
+            From custom websites and eCommerce stores to AI agents, admin dashboards,
+            paid advertising, and content creation, we build the digital layer behind
+            modern businesses.
           </p>
         </div>
 
-        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-2">
-          <div className="grid grid-cols-3 gap-2 pb-1">
-            {serviceStories.map((story) => {
-              const active = story.id === activeId;
+        <div className="grid gap-4 md:hidden">
+          {serviceStories.map((story, index) => {
+            const active = story.id === activeId;
+            const Icon = story.icon;
 
-              return (
+            return (
+              <div key={story.id} className="grid gap-2">
                 <button
-                  key={story.id}
                   type="button"
-                  onClick={() => setActiveId(story.id)}
-                  className={`relative min-w-0 overflow-hidden rounded-[18px] border px-2.5 py-3 text-left transition sm:rounded-[20px] sm:px-4 sm:py-4 ${
-                    active
-                      ? "border-white/14"
-                      : "border-white/8 bg-black/10 hover:bg-white/[0.03]"
-                  }`}
+                  onClick={() =>
+                    setActiveId((current) => (current === story.id ? null : story.id))
+                  }
+                  className="flex w-full items-center justify-between gap-4 rounded-full bg-white px-5 py-4 text-left text-[var(--foreground)] shadow-[0_16px_30px_rgba(0,0,0,0.16)]"
                 >
-                  {active ? (
-                    <motion.span
-                      layoutId="services-active-pill"
-                      transition={{ duration: 0.35, ease }}
-                      className="absolute inset-0 rounded-[20px] bg-white"
-                    />
-                  ) : null}
-
-                  <span className="relative flex items-center justify-between gap-2 sm:gap-4">
-                    <span className="min-w-0 flex-1">
-                      <span
-                        className={`hidden text-[11px] uppercase tracking-[0.24em] sm:block ${
-                          active ? "text-black/42" : "text-white/34"
-                        }`}
-                      >
-                        {story.eyebrow}
-                      </span>
-                      <span
-                        className={`block text-[0.92rem] font-semibold leading-[1.05] tracking-[-0.04em] whitespace-normal sm:mt-2 sm:text-[1.45rem] sm:leading-none sm:tracking-[-0.05em] ${
-                          active ? "text-black" : "text-white"
-                        }`}
-                      >
+                  <span className="flex min-w-0 items-center gap-3">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-[1.55rem] font-semibold leading-none">
                         {story.tab}
                       </span>
+                      <span className="mt-1 block text-sm leading-snug text-black/58">
+                        {story.eyebrow}
+                      </span>
                     </span>
-                    <span
-                      className={`h-2.5 w-2.5 shrink-0 rounded-full ${
-                        active ? "bg-[var(--accent)] shadow-[0_0_18px_rgba(152,0,0,0.55)]" : "bg-white/28"
-                      }`}
-                    />
                   </span>
+                  <ChevronDown
+                    className={`h-8 w-8 shrink-0 text-[var(--accent)] transition-transform duration-300 ${
+                      active ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
-              );
-            })}
-          </div>
 
-          <div className="mt-2 overflow-hidden rounded-[24px] bg-[rgba(255,255,255,0.03)] sm:rounded-[28px] sm:border sm:border-white/10">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeService.id}
-                initial={prefersReducedMotion ? false : { opacity: 0, x: 24 }}
-                animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
-                exit={prefersReducedMotion ? undefined : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.45, ease }}
-                className="block"
+                <AnimatePresence initial={false}>
+                  {active ? (
+                    <motion.div
+                      key={`${story.id}-panel`}
+                      initial={prefersReducedMotion ? false : { opacity: 0, y: -10, height: 0 }}
+                      animate={
+                        prefersReducedMotion
+                          ? { opacity: 1, height: "auto" }
+                          : { opacity: 1, y: 0, height: "auto" }
+                      }
+                      exit={
+                        prefersReducedMotion
+                          ? { opacity: 0, height: 0 }
+                          : { opacity: 0, y: -8, height: 0 }
+                      }
+                      transition={{ duration: 0.34, ease }}
+                      className="overflow-hidden rounded-[28px] bg-white text-[var(--foreground)] shadow-[0_18px_34px_rgba(0,0,0,0.16)]"
+                    >
+                      <div className="grid gap-5 px-5 py-6 text-center">
+                        <div className="flex justify-center">
+                          <div className="flex h-16 w-16 items-center justify-center rounded-[22px] bg-[linear-gradient(135deg,var(--accent-soft),rgba(255,255,255,0.9))] text-[var(--accent)]">
+                            <Icon className="h-7 w-7" />
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
+                            0{index + 1}
+                          </p>
+                          <h3 className="mt-3 text-[1.7rem] font-semibold leading-[1.02]">
+                            {story.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-base leading-relaxed text-black/66">
+                          {story.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="hidden gap-4 md:grid lg:grid-cols-2 xl:grid-cols-4">
+          {serviceStories.map((story, index) => {
+            const Icon = story.icon;
+            const isAccent = story.emphasis === "accent";
+
+            return (
+              <article
+                key={story.id}
+                className={`flex h-full flex-col rounded-[30px] border px-5 py-5 shadow-[0_18px_34px_rgba(0,0,0,0.14)] lg:px-6 lg:py-6 ${
+                  isAccent
+                    ? "border-white/10 bg-white text-[var(--foreground)]"
+                    : "border-white/10 bg-white/[0.05] text-white"
+                }`}
               >
-                <div
-                  className="px-4 py-4 sm:px-6 sm:py-6 lg:px-7 lg:py-7"
-                  style={{ backgroundImage: activeService.panelGradient }}
-                >
-                  <div className="inline-flex rounded-full border border-white/14 bg-white/[0.08] px-3 py-1.5 text-xs uppercase tracking-[0.22em] text-white/72">
-                    {activeService.eyebrow}
+                <div className="flex h-full flex-col justify-between">
+                  <div className="text-center">
+                    <div className="flex justify-center">
+                      <span
+                        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] ${
+                          isAccent
+                            ? "bg-[var(--accent-soft)] text-[var(--accent)]"
+                            : "bg-white/[0.08] text-white"
+                        }`}
+                      >
+                        <Icon className="h-6 w-6" />
+                      </span>
+                    </div>
+                    <p
+                      className={`mt-4 text-xs uppercase tracking-[0.22em] ${
+                        isAccent ? "text-black/42" : "text-white/38"
+                      }`}
+                    >
+                      0{index + 1}
+                    </p>
+                    <h3 className="mt-2 text-[1.65rem] font-semibold leading-none">
+                      {story.tab}
+                    </h3>
+                    <p
+                      className={`mt-4 text-sm uppercase tracking-[0.2em] ${
+                        isAccent ? "text-[var(--accent)]" : "text-white/44"
+                      }`}
+                    >
+                      {story.eyebrow}
+                    </p>
+
+                    <h4 className="mt-4 text-[1.8rem] font-semibold leading-[1.02]">
+                      {story.title}
+                    </h4>
+
+                    <p
+                      className={`mt-4 text-base leading-relaxed ${
+                        isAccent ? "text-black/64" : "text-white/66"
+                      }`}
+                    >
+                      {story.description}
+                    </p>
                   </div>
-
-                  <h3 className="mt-4 max-w-[18ch] text-balance text-[clamp(1.8rem,4vw,4.1rem)] font-semibold leading-[0.94] tracking-[-0.07em]">
-                    {activeService.title}
-                  </h3>
-
-                  <p className="mt-3 max-w-[56rem] text-sm leading-relaxed text-white/68 sm:text-base lg:text-lg">
-                    {activeService.description}
-                  </p>
+                  <div
+                    className={`mx-auto mt-6 h-1.5 w-24 rounded-full ${
+                      isAccent ? "bg-[var(--accent)]/70" : "bg-white/18"
+                    }`}
+                  />
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {serviceStories.map((story, index) => {
+            const isAccent = story.emphasis === "accent";
+
+            return (
+              <div
+                key={`${story.id}-why`}
+                className={`rounded-[26px] px-5 py-5 text-center shadow-[0_16px_30px_rgba(0,0,0,0.14)] ${
+                  isAccent
+                    ? "bg-[linear-gradient(135deg,var(--accent-soft-alt),rgba(255,255,255,0.94))] text-[var(--foreground)]"
+                    : "border border-white/10 bg-white/[0.05] text-white"
+                }`}
+              >
+                <p
+                  className={`text-[11px] uppercase tracking-[0.24em] ${
+                    isAccent ? "text-[var(--accent)]" : "text-white/44"
+                  }`}
+                >
+                  Why it matters
+                </p>
+                <h3 className="mt-3 text-[1.35rem] font-semibold leading-[1.05]">
+                  {story.tab}
+                </h3>
+                <p
+                  className={`mx-auto mt-3 max-w-[34rem] text-sm leading-relaxed ${
+                    isAccent ? "text-black/68" : "text-white/72"
+                  }`}
+                >
+                  {story.whyItMatters}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { isEnabledRoute } from "./site-data";
 
@@ -57,7 +57,7 @@ type ContactFormState = {
   name: string;
   email: string;
   company: string;
-  service: string;
+  services: string[];
   priority: string;
   message: string;
 };
@@ -68,6 +68,26 @@ const consultationServices = [
   "Admin dashboards",
   "Marketing & growth"
 ] as const;
+
+const EMAILJS_CDN = "https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js";
+const EMAILJS_SERVICE_ID = "service_nwymbag";
+const EMAILJS_TEMPLATE_ID = "template_g7fw1l9";
+const EMAILJS_PUBLIC_KEY = "90sZ4gxN50jBAkekB";
+
+type EmailJsApi = {
+  init: (publicKey: string) => void;
+  send: (
+    serviceId: string,
+    templateId: string,
+    templateParams: Record<string, string>
+  ) => Promise<unknown>;
+};
+
+declare global {
+  interface Window {
+    emailjs?: EmailJsApi;
+  }
+}
 
 function SectionMotion({
   children,
@@ -93,21 +113,33 @@ function SectionMotion({
 
 function ActionButtons({
   primaryAction,
-  secondaryAction
+  secondaryAction,
+  compact = false,
+  stackOnMobile = true
 }: {
   primaryAction?: Action;
   secondaryAction?: Action;
+  compact?: boolean;
+  stackOnMobile?: boolean;
 }) {
   if (!primaryAction && !secondaryAction) {
     return null;
   }
 
   return (
-    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+    <div
+      className={`mt-8 flex gap-3 ${
+        stackOnMobile ? "flex-col sm:flex-row" : "flex-row"
+      }`}
+    >
       {primaryAction ? (
         <ActionLink
           href={primaryAction.href}
-          className="rounded-full bg-[var(--accent)] px-7 py-3.5 text-center text-base font-semibold text-white shadow-[0_12px_24px_var(--shadow-color)] transition hover:-translate-y-0.5 hover:bg-[#7f0000]"
+          className={`rounded-full bg-[var(--accent)] text-center font-semibold text-white shadow-[0_12px_24px_var(--shadow-color)] transition hover:-translate-y-0.5 hover:bg-[var(--accent-hover)] ${
+            compact
+              ? "flex-1 px-5 py-3.5 text-[0.98rem] sm:flex-none sm:px-6 sm:text-base"
+              : "px-7 py-3.5 text-base"
+          }`}
         >
           {primaryAction.label}
         </ActionLink>
@@ -116,7 +148,11 @@ function ActionButtons({
       {secondaryAction ? (
         <ActionLink
           href={secondaryAction.href}
-          className="rounded-full border border-[var(--line)] bg-white px-7 py-3.5 text-center text-base font-medium text-black/78 transition hover:bg-[var(--background-soft)]"
+          className={`rounded-full border border-[var(--line)] bg-white text-center font-medium text-black/78 transition hover:bg-[var(--background-soft)] ${
+            compact
+              ? "flex-1 px-5 py-3.5 text-[0.98rem] sm:flex-none sm:px-6 sm:text-base"
+              : "px-7 py-3.5 text-base"
+          }`}
         >
           {secondaryAction.label}
         </ActionLink>
@@ -170,7 +206,7 @@ export function HomeHero({
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <ActionLink
             href={primaryAction.href}
-            className="rounded-full bg-[var(--accent)] px-10 py-4 text-lg font-semibold text-white shadow-[0_12px_24px_var(--shadow-color)] transition hover:-translate-y-0.5 hover:bg-[#7f0000]"
+            className="rounded-full bg-[var(--accent)] px-10 py-4 text-lg font-semibold text-white shadow-[0_12px_24px_var(--shadow-color)] transition hover:-translate-y-0.5 hover:bg-[var(--accent-hover)]"
           >
             {primaryAction.label}
           </ActionLink>
@@ -194,7 +230,13 @@ export function PageHero({
   secondaryAction,
   stats,
   sideTitle,
-  sidePoints
+  sidePoints,
+  titleClassName = "",
+  descriptionClassName = "",
+  titleSizeClass = "text-[clamp(3.1rem,7vw,7rem)]",
+  descriptionSizeClass = "text-[clamp(1.05rem,1.8vw,1.35rem)]",
+  compactActions = false,
+  stackActionsOnMobile = true
 }: {
   eyebrow: string;
   title: string;
@@ -204,6 +246,12 @@ export function PageHero({
   stats?: Stat[];
   sideTitle?: string;
   sidePoints?: string[];
+  titleClassName?: string;
+  descriptionClassName?: string;
+  titleSizeClass?: string;
+  descriptionSizeClass?: string;
+  compactActions?: boolean;
+  stackActionsOnMobile?: boolean;
 }) {
   const hasSidePanel = sideTitle && sidePoints?.length;
 
@@ -217,15 +265,21 @@ export function PageHero({
         <div className="inline-flex rounded-full border border-[var(--accent)] bg-[var(--accent-soft)] px-4 py-2 text-sm text-[var(--accent)]">
           {eyebrow}
         </div>
-        <h1 className="mt-6 max-w-[780px] text-[clamp(3.1rem,7vw,7rem)] font-semibold leading-[0.92] tracking-[-0.08em]">
+        <h1
+          className={`mt-6 max-w-[780px] ${titleSizeClass} font-semibold leading-[0.92] tracking-[-0.08em] ${titleClassName}`}
+        >
           {title}
         </h1>
-        <p className="mt-6 max-w-[760px] text-[clamp(1.05rem,1.8vw,1.35rem)] leading-relaxed tracking-[-0.03em] text-black/62">
+        <p
+          className={`mt-6 max-w-[760px] ${descriptionSizeClass} leading-relaxed tracking-[-0.03em] text-black/62 ${descriptionClassName}`}
+        >
           {description}
         </p>
         <ActionButtons
           primaryAction={primaryAction}
           secondaryAction={secondaryAction}
+          compact={compactActions}
+          stackOnMobile={stackActionsOnMobile}
         />
 
         {stats?.length ? (
@@ -642,15 +696,72 @@ export function ContactFormSection({
   title: string;
   description: string;
 }) {
-  const [submitted, setSubmitted] = useState(false);
+  const [emailReady, setEmailReady] = useState(false);
+  const [serviceError, setServiceError] = useState(false);
+  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">(
+    "idle"
+  );
+  const [submitMessage, setSubmitMessage] = useState("");
   const [formState, setFormState] = useState<ContactFormState>({
     name: "",
     email: "",
     company: "",
-    service: "",
+    services: [],
     priority: "",
     message: ""
   });
+
+  useEffect(() => {
+    function initEmailJs() {
+      if (!window.emailjs) {
+        return false;
+      }
+
+      window.emailjs.init(EMAILJS_PUBLIC_KEY);
+      setEmailReady(true);
+      return true;
+    }
+
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (initEmailJs()) {
+      return;
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      `script[src="${EMAILJS_CDN}"]`
+    );
+
+    const script = existingScript ?? document.createElement("script");
+
+    if (!existingScript) {
+      script.src = EMAILJS_CDN;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    const handleLoad = () => {
+      if (!initEmailJs()) {
+        setSubmitState("error");
+        setSubmitMessage("Email service failed to initialize.");
+      }
+    };
+
+    const handleError = () => {
+      setSubmitState("error");
+      setSubmitMessage("Email service failed to load.");
+    };
+
+    script.addEventListener("load", handleLoad);
+    script.addEventListener("error", handleError);
+
+    return () => {
+      script.removeEventListener("load", handleLoad);
+      script.removeEventListener("error", handleError);
+    };
+  }, []);
 
   function updateField<K extends keyof ContactFormState>(
     key: K,
@@ -659,15 +770,68 @@ export function ContactFormSection({
     setFormState((current) => ({ ...current, [key]: value }));
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function toggleService(service: string) {
+    setFormState((current) => ({
+      ...current,
+      services: current.services.includes(service)
+        ? current.services.filter((item) => item !== service)
+        : [...current.services, service]
+    }));
+    setServiceError(false);
+    if (submitState !== "idle") {
+      setSubmitState("idle");
+      setSubmitMessage("");
+    }
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+
+    if (formState.services.length === 0) {
+      setServiceError(true);
+      return;
+    }
+
+    if (!window.emailjs || !emailReady) {
+      setSubmitState("error");
+      setSubmitMessage("Email service is still loading. Try again in a moment.");
+      return;
+    }
+
+    setSubmitState("sending");
+    setSubmitMessage("");
+
+    try {
+      await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        name: formState.name,
+        email: formState.email,
+        business_name: formState.company,
+        title: formState.priority,
+        services: formState.services.join(", "),
+        message: formState.message
+      });
+
+      setFormState({
+        name: "",
+        email: "",
+        company: "",
+        services: [],
+        priority: "",
+        message: ""
+      });
+      setServiceError(false);
+      setSubmitState("success");
+      setSubmitMessage("Message sent successfully. We will be in touch soon.");
+    } catch {
+      setSubmitState("error");
+      setSubmitMessage("Could not send the message. Please try again.");
+    }
   }
 
   return (
     <SectionMotion className="mt-8">
       <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(135deg,#171616,#252223)] px-6 py-8 text-white shadow-[0_18px_36px_var(--shadow-color)] sm:px-8 sm:py-9 lg:px-10">
-        <div className="pointer-events-none absolute -right-16 top-8 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(152,0,0,0.22),transparent_68%)] blur-3xl" />
+        <div className="pointer-events-none absolute -right-16 top-8 h-56 w-56 rounded-full bg-[radial-gradient(circle,var(--accent-glow-strong),transparent_68%)] blur-3xl" />
         <div className="pointer-events-none absolute -left-8 bottom-0 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.08),transparent_72%)] blur-2xl" />
 
         <div className="relative mx-auto max-w-[920px]">
@@ -701,10 +865,12 @@ export function ContactFormSection({
                 <span className="text-sm font-medium text-white/68">Name</span>
                 <input
                   type="text"
+                  name="name"
                   value={formState.name}
                   onChange={(event) => updateField("name", event.target.value)}
                   placeholder="Your name"
-                  className="border-b border-white/14 bg-transparent pb-3 text-white outline-none transition placeholder:text-white/24 focus:border-[rgba(152,0,0,0.65)]"
+                  autoComplete="name"
+                  className="form-field px-4 py-3.5"
                   required
                 />
               </label>
@@ -713,10 +879,12 @@ export function ContactFormSection({
                 <span className="text-sm font-medium text-white/68">Email</span>
                 <input
                   type="email"
+                  name="email"
                   value={formState.email}
                   onChange={(event) => updateField("email", event.target.value)}
                   placeholder="you@example.com"
-                  className="border-b border-white/14 bg-transparent pb-3 text-white outline-none transition placeholder:text-white/24 focus:border-[rgba(152,0,0,0.65)]"
+                  autoComplete="email"
+                  className="form-field px-4 py-3.5"
                   required
                 />
               </label>
@@ -727,10 +895,12 @@ export function ContactFormSection({
                 <span className="text-sm font-medium text-white/68">Business name</span>
                 <input
                   type="text"
+                  name="business_name"
                   value={formState.company}
                   onChange={(event) => updateField("company", event.target.value)}
                   placeholder="Business or brand"
-                  className="border-b border-white/14 bg-transparent pb-3 text-white outline-none transition placeholder:text-white/24 focus:border-[rgba(152,0,0,0.65)]"
+                  autoComplete="organization"
+                  className="form-field px-4 py-3.5"
                   required
                 />
               </label>
@@ -741,10 +911,12 @@ export function ContactFormSection({
                 </span>
                 <input
                   type="text"
+                  name="title"
                   value={formState.priority}
                   onChange={(event) => updateField("priority", event.target.value)}
                   placeholder="More leads, better ops, launch, automation..."
-                  className="border-b border-white/14 bg-transparent pb-3 text-white outline-none transition placeholder:text-white/24 focus:border-[rgba(152,0,0,0.65)]"
+                  autoComplete="off"
+                  className="form-field px-4 py-3.5"
                   required
                 />
               </label>
@@ -752,21 +924,23 @@ export function ContactFormSection({
 
             <fieldset className="grid gap-3">
               <legend className="text-sm font-medium text-white/68">
-                Which service do you want help with?
+                Which services do you want help with?
               </legend>
+              <input type="hidden" name="services" value={formState.services.join(", ")} />
               <div className="flex flex-wrap gap-3">
                 {consultationServices.map((service) => {
-                  const selected = formState.service === service;
+                  const selected = formState.services.includes(service);
 
                   return (
                     <button
                       key={service}
                       type="button"
-                      onClick={() => updateField("service", service)}
-                      className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition ${
+                      onClick={() => toggleService(service)}
+                      aria-pressed={selected}
+                      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition ${
                         selected
-                          ? "bg-[var(--accent)] text-white"
-                          : "bg-white/[0.06] text-white/70 hover:bg-white/[0.1]"
+                          ? "border-[var(--accent)] bg-[var(--accent)] text-white shadow-[0_12px_24px_rgba(178,63,62,0.22)]"
+                          : "border-white/10 bg-white/[0.06] text-white/70 hover:border-white/18 hover:bg-white/[0.1]"
                       }`}
                     >
                       <span
@@ -781,36 +955,48 @@ export function ContactFormSection({
                   );
                 })}
               </div>
+              <p className={`text-sm ${serviceError ? "text-[var(--accent)]" : "text-white/44"}`}>
+                {serviceError ? "Choose at least one service." : "Choose one or more options."}
+              </p>
             </fieldset>
 
             <label className="grid gap-2">
               <span className="text-sm font-medium text-white/68">Tell us what you need</span>
               <textarea
+                name="message"
                 value={formState.message}
                 onChange={(event) => updateField("message", event.target.value)}
                 placeholder="What are you trying to launch, improve, or automate?"
-                className="min-h-[150px] border-b border-white/14 bg-transparent pb-3 text-white outline-none transition placeholder:text-white/24 focus:border-[rgba(152,0,0,0.65)]"
+                autoComplete="off"
+                className="form-field min-h-[150px] px-4 py-3.5"
                 required
               />
             </label>
 
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
               <p className="max-w-[34rem] text-sm leading-relaxed text-white/44">
-                Pick a service, send the details, and we will review the best next step for
-                the business.
+                Pick the services that fit, send the details, and we will review the best
+                next step for the business.
               </p>
               <button
                 type="submit"
-                className="rounded-full bg-[var(--accent)] px-7 py-3 text-base font-semibold text-white shadow-[0_12px_24px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:bg-[#7f0000]"
+                disabled={submitState === "sending"}
+                className="rounded-full bg-[var(--accent)] px-7 py-3 text-base font-semibold text-white shadow-[0_12px_24px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--accent-hover)]"
               >
-                Request consultation
+                {submitState === "sending" ? "Sending..." : "Request consultation"}
               </button>
             </div>
 
-            {submitted ? (
-              <div className="flex items-center gap-3 text-sm text-white/82">
+            {submitState === "success" ? (
+              <div aria-live="polite" className="flex items-center gap-3 text-sm text-white/82">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent)]" />
-                Requested a consultation. We will be in touch soon.
+                {submitMessage}
+              </div>
+            ) : null}
+
+            {submitState === "error" ? (
+              <div aria-live="polite" className="text-sm text-[var(--accent)]">
+                {submitMessage}
               </div>
             ) : null}
           </form>
@@ -872,7 +1058,7 @@ export function FinalCta({
         >
           <ActionLink
             href={primaryAction.href}
-            className={`rounded-full bg-[var(--accent)] text-center font-semibold text-white shadow-[0_12px_24px_var(--shadow-color)] transition hover:-translate-y-0.5 hover:bg-[#7f0000] ${
+            className={`rounded-full bg-[var(--accent)] text-center font-semibold text-white shadow-[0_12px_24px_var(--shadow-color)] transition hover:-translate-y-0.5 hover:bg-[var(--accent-hover)] ${
               compact ? "w-full px-4 py-2.5 text-sm" : "px-7 py-3.5 text-base"
             }`}
           >

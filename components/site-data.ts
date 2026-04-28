@@ -5,7 +5,14 @@ export const navigation = [
   { label: "Contact", href: "/contact" }
 ];
 
-export const enabledRoutes = ["/", "/services", "/contact"] as const;
+export const enabledRoutes = [
+  "/",
+  "/services",
+  "/about-us",
+  "/contact",
+  "/join",
+  "/team"
+] as const;
 
 export function isEnabledRoute(href: string) {
   return enabledRoutes.includes(href as (typeof enabledRoutes)[number]);

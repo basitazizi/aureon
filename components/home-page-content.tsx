@@ -36,7 +36,7 @@ export default function HomePageContent() {
 
         <div className="relative space-y-10 pb-6 sm:space-y-12">
           <section className="relative left-1/2 w-screen -translate-x-1/2 px-6 pt-0 lg:px-10">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,rgba(152,0,0,0.08),transparent_62%)]" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,var(--accent-glow),transparent_62%)]" />
 
             <div className="relative mx-auto flex max-w-[960px] flex-col items-center pt-2 text-center sm:pt-4">
               <Reveal prefersReducedMotion={prefersReducedMotion} delay={0.08}>
@@ -343,7 +343,7 @@ function MoveDot({
           ? undefined
           : { duration: 3.6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
       }
-      className="h-2 w-8 rounded-full bg-[linear-gradient(90deg,var(--accent),rgba(152,0,0,0.16))]"
+      className="h-2 w-8 rounded-full bg-[linear-gradient(90deg,var(--accent),var(--accent-gradient-fade))]"
     />
   );
 }
