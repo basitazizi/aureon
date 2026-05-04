@@ -14,13 +14,6 @@ export const metadata: Metadata = {
     "Learn how Aureon combines product design, development, systems thinking, and growth support into one focused team."
 };
 
-const aboutPeople = [
-  { name: "Basit", role: "" },
-  { name: "Masi", role: "" },
-  { name: "Carlos", role: "" },
-  { name: "Sohail", role: "" }
-];
-
 export default function AboutUsPage() {
   return (
     <SiteShell>
@@ -47,31 +40,37 @@ export default function AboutUsPage() {
 
       <section className="mt-8">
         <div className="max-w-[760px]">
-          <p className="text-sm uppercase tracking-[0.24em] text-black/42">People</p>
+          <p className="text-sm uppercase tracking-[0.24em] text-black/42">Join us</p>
           <h2 className="mt-4 text-[clamp(2.4rem,4.8vw,4.8rem)] font-semibold leading-[0.96] tracking-[-0.06em] text-black">
-            The people behind the delivery.
+            Be a part of a great change.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-black/60">
-            A small team across strategy, design, development, and operations.
+            Support the business and help build better digital systems with work that has a clear purpose.
           </p>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4">
-            {aboutPeople.map((person, index) => (
-              <article
-                key={person.name}
-                className="rounded-[28px] border border-[var(--line)] bg-white px-4 py-4 shadow-[0_12px_24px_var(--shadow-color)] sm:px-5 sm:py-5"
-              >
-                <p className="text-sm text-black/38">0{index + 1}</p>
-                <h3 className="mt-4 text-[clamp(1.7rem,4.5vw,2rem)] font-semibold leading-none tracking-[-0.05em] text-black">
-                  {person.name}
-                </h3>
-                <p className="mt-3 text-sm uppercase tracking-[0.22em] text-[var(--accent)]">
-                  {person.role}
-                </p>
-              </article>
-            ))}
-        </div>
+        <article className="mt-8 rounded-[32px] border border-[var(--line)] bg-white px-6 py-7 shadow-[0_12px_24px_var(--shadow-color)] sm:px-8 sm:py-8">
+          <div className="max-w-[54rem]">
+            <p className="text-sm uppercase tracking-[0.22em] text-[var(--accent)]">
+              Join Aureon
+            </p>
+            <h3 className="mt-4 text-[clamp(2.2rem,4.8vw,3.8rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-black">
+              Call us now to join.
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-black/60 sm:text-lg">
+              Support the business or be a part of a great change. We are building focused digital work for real businesses and looking for people who want to contribute with clarity and purpose.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <a
+              href="tel:6196274295"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--accent)] px-7 text-sm font-medium tracking-[0.04em] text-white transition hover:bg-[var(--accent-hover)]"
+            >
+              Call us now
+            </a>
+          </div>
+        </article>
       </section>
 
       <FinalCta
