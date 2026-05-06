@@ -72,7 +72,7 @@ const consultationServices = [
 const EMAILJS_CDN = "https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js";
 const EMAILJS_SERVICE_ID = "service_nwymbag";
 const EMAILJS_TEMPLATE_ID = "template_g7fw1l9";
-const EMAILJS_PUBLIC_KEY = "90sZ4gxN50jBAkekB";
+const EMAILJS_PUBLIC_KEY = "wsuO0WttGsUp88RT5";
 
 type EmailJsApi = {
   init: (publicKey: string) => void;
